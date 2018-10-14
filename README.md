@@ -1,6 +1,8 @@
 # NginxTree
 Nginx技术研究
 
+![](https://i.imgur.com/Q1zsmN8.png)
+
 <pre>
 Nginx服务器架构
   1）Nginx服务器的WEB请求处理机制
