@@ -176,6 +176,8 @@ Web缓存技术被认为是减轻服务器负载，降低网络阻塞，增强�
 
 ![](https://i.imgur.com/L4njA1I.png)
 
+![](https://i.imgur.com/dYlaisX.png)
+
 <pre>
 Squid技术
     squid可以用于缓存更多更大的内容，属于专业用语缓存的功能，比如尤其适合缓存图片、文档等；
@@ -186,4 +188,15 @@ nginx是用第三方模块ncache做的缓冲，其性能基本达到varnish，�
     在静态架构中，如果前端直接面对的是CDN活着前端了4层负载的话，完全用nginx的cache就够了。
     nginx Cache是为了提供访问最频繁资源的缓存而已，适合缓存纯文本体积较小的内容，缓存少量页面资源，主业是提供Web服务与代理的作用，若是Cache内容过多容易造成性能瓶颈与负载过大.
     nginx也没有专门的存储引擎，nginx可以认为是已个七层LB，再加上可以嵌入各种脚本语言，实现WAF规则和七层的定制开发策略非常容器，但要是作为专门的web cache server还要差不少。
+
+varnish
+   1）从功能上说：varnish和squid是专业的cache服务，而nginx的cache功能是由第三方模块完成。
+   2）要做cache服务的话，肯定是要选择专业的cache服务，优先选择squid和varnish。
+      Varnish 可以认为是内存缓存，速度一流，但是内存缓存也限制了其容量，缓存页面和图片一般是挺好的；
+      varnish本身的技术上优势要高于squid，它采用了“Visual Page Cache”技术，在内存的利用上，Varnish比Squid具有优势，它避免了Squid频繁在内存、磁盘中交换文件，性能要比Squid高。
+      varnish是不能cache到本地硬盘上的。
+      Varnish可以使用正则表达式快速、批量地清除部分缓存
+      varnish的内存管理完全交给内核，当缓存内容超过内存阈值时，内核会自动将一部分缓存存入  swap中让出内存。以挪威一家报社的经验，1台varnish可以抵6台squid的性能。
+      varnish用来做网站和小文件的缓存，相当给力的,做图片cache之类的合适
+      varnish没有专门的存储引擎 
 </pre>
