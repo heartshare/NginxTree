@@ -200,3 +200,8 @@ varnish
       varnish用来做网站和小文件的缓存，相当给力的,做图片cache之类的合适
       varnish没有专门的存储引擎 
 </pre>
+
+
+配置Nginx动静分离
+
+![](https://i.imgur.com/ofwPHZK.png)
